@@ -23,6 +23,7 @@ position = Vector2(76, 354)
 position = Vector2(0, 768)
 
 [node name="PipeTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="HUD" parent="." instance=ExtResource("6_ki440")]
 
