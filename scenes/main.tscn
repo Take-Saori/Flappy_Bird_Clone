@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3ji4ujlctinl"]
+
+[ext_resource type="Texture2D" uid="uid://dcq8nh1ag05so" path="res://assets/bg.png" id="1_dd024"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ouidj"]
+[ext_resource type="PackedScene" uid="uid://b1lwpwcjxd31a" path="res://scenes/bird.tscn" id="2_g045t"]
+[ext_resource type="PackedScene" uid="uid://f57ux4h48b5s" path="res://scenes/pipe.tscn" id="2_jv4gk"]
+[ext_resource type="PackedScene" uid="uid://b7l6mra7fpxul" path="res://scenes/ground.tscn" id="3_swtne"]
+[ext_resource type="PackedScene" uid="uid://ybujgwijd2jx" path="res://scenes/hud.tscn" id="6_ki440"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ouidj")
+pipe_scene = ExtResource("2_jv4gk")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(432, 384)
+texture = ExtResource("1_dd024")
+
+[node name="Bird" parent="." instance=ExtResource("2_g045t")]
+z_index = 2
+position = Vector2(76, 354)
+
+[node name="Ground" parent="." instance=ExtResource("3_swtne")]
+position = Vector2(0, 768)
+
+[node name="PipeTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("6_ki440")]
+
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
